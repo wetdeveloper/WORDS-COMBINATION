@@ -22,10 +22,14 @@ def create_app():
 
     from .routes.main import main_bp
     from .routes.api import api_bp
+    from .routes.security import security_bp
+    from .routes.report import report_bp
 
 
     app.register_blueprint(main_bp)
     app.register_blueprint(api_bp)
+    app.register_blueprint(security_bp)
+    app.register_blueprint(report_bp)
 
 
     return app

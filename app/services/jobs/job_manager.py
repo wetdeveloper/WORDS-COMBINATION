@@ -2,6 +2,7 @@ import json
 
 from app.extensions import db
 from app.models.job import GenerationJob
+from app.services.executor.executor import execute_job
 
 from app.services.generator.counter import (
     permutation_repeat,
@@ -48,6 +49,8 @@ def create_job(elements, length, mode):
 
     db.session.add(job)
     db.session.commit()
+
+    execute_job(job)
 
     return job
 
